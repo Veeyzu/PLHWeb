@@ -133,7 +133,15 @@
             }
 
             #Notifier {
-
+                position: fixed;
+                z-index: 100;
+                left: 50%;
+                top: 50%;
+                width: 500px;
+                height: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(171, 134, 134,.9);
+                border-radius: 20px;
             }
            
             .Explanator {
@@ -164,6 +172,40 @@
                 text-shadow: -2px 1px 10px rgba(0,0,0,0.97);
                 padding-bottom: 100px;
                 text-align: justify;
+            }
+
+            #desc{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+               
+                
+                width: 90%;
+                top:150px;
+                
+            
+                z-index: 3;
+                font-size: 25px;
+                transform: translate(-50%,-50%);
+                height: auto;
+                color: rgb(255, 255, 255);
+                text-shadow: -2px 1px 10px rgba(0,0,0,0.97);
+               
+            
+            }
+
+            #CloseButton {
+                position: inherit;
+                bottom: 0px;
+                background-color: rgb(168, 80, 80);
+                width: 50%;
+                height: auto;
+                transform: translate(-50%,-50%);
+                left: 50%;
+                text-align: center;
+                font-size: 4vh;
+                border-radius: 5px;
+                bottom: 10px;
             }
 
             h2{
@@ -395,12 +437,7 @@
 		-->
 
         <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
-        <script type="text/javascript">
-        $(function(){
-            var height = $("#content").height();
-            $(".Explanator").height(height);
-        });
-        </script>
+        
 		<script type="importmap">
 			{
 				"imports": {
@@ -447,6 +484,13 @@
                 
             
         </center>
+
+        <div id="Notifier">
+            <p id = "desc"> Page ini dimiliki oleh kelompok 4 PLH dari kelas XI1 bukan X1, aku salah namain domainnya HEUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU ;-; -- Veyzha</p>
+            <div id="CloseButton">
+                Tutup
+            </div>
+        </div>
 
         <div id="Credits">
             <img id=hambagaButton src="/Assets/HambagaIcon.png" alt="">

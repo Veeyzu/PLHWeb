@@ -10,6 +10,30 @@ document.addEventListener("mousemove", function (event) {
    
 });
 
+let openedCredits = true;
+let openCredits = -1000;
+let goalCredits = -1000;
+document.getElementById("hambagaButton").addEventListener('click', function func(){
+  openedCredits = !openedCredits;
+
+
+  if (openedCredits) {
+    goalCredits = -1000;
+  
+  }else{
+    goalCredits = 0;
+    
+  }
+
+})
+
+document.getElementById("CloseButton").addEventListener('click', function func(){
+
+  document.getElementById("Notifier").style.top = '-1000px';
+
+})
+
+
 function lerp(a, b, t){
   return a + t * (b - a);
 }
@@ -78,22 +102,7 @@ function updateCameraAspect(camera) {
   camera.updateProjectionMatrix();
 }
 
-let openedCredits = false;
-let openCredits = -1000;
-let goalCredits = -1000;
-document.getElementById("hambagaButton").addEventListener('click', function func(){
-  openedCredits = !openedCredits;
 
-
-  if (openedCredits) {
-    goalCredits = -1000;
-  
-  }else{
-    goalCredits = 0;
-    
-  }
-
-})
 
 window.addEventListener('resize', function func(){
   renderer.setSize(window.innerWidth, window.innerHeight);
