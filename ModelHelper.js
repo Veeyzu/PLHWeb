@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from '/three/examples/jsm/loaders/GLTFLoader.js';
 
 const scenePath = '/Assets/PLHEnvironment.gltf'
 
