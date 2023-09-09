@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+	
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>PLH Web</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Oswald:wght@700&family=Red+Hat+Display:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Oswald:wght@700&family=Red+Hat+Display:wght@500&family=Rubik:wght@300;700&display=swap" rel="stylesheet">
+
+        <style>
+            html {
+            scroll-behavior: smooth;
+            }
+            canvas {
+                color: rgb(2,2,2);
+                left: 0px;
+            }
+            body::-webkit-scrollbar{
+                display: none;
+            }
+			body {
+                position:static; 
+                margin: 0; 
+               }
+            .DivHeadbar {
+               
+                background: rgb(226,249,255);
+                background: linear-gradient(180deg, rgba(105,51,51,1) 1%, rgba(64,37,28,1) 72%, rgba(105,51,51,1) 73%, rgba(115,82,63,1) 81%, rgba(0,0,0,1) 84%, rgba(0,0,0,0) 100%);
+                width:  100%;
+                height: 45px;
+                position: fixed;
+                z-index: 9;
+              
+            }
+            .Logo {
+                position: relative;
+                
+                z-index: 2;
+                width: auto;
+                height: 50%;
+                left: 50%;
+                top: 0%;
+                margin-bottom: 20px;
+                transform: translate(-50%, -0%);
+            }
+            #CenterStuff{
+              
+                position: fixed;
+                left: 25%;
+                top: 50%;
+                width: 500px;
+                height: 500px;
+                
+                z-index: 10; 
+                transform: translate(-50%, -50%);
+            }
+            canvas{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+            }
+            .Title{
+                padding-left: 10px;
+                align-self: center;
+                padding-top: 0px;
+                padding-right: 10px;
+                height:10vh;
+                
+                transform: translate(0%, 20%);
+                transition: height .1s;
+                z-index: 11;
+            }
+
+            .Title:hover{
+                height: 15vh;
+            }
+            
+
+            .Title:hover #Pinwheel {
+                
+                width: 15%;
+                rotate: 23;
+                transform: translateY(-10px);
+            }
+
+            .Headbar{
+            
+                position: relative;
+                top: 10px;
+                transform: 50% 50%;
+               
+            }
+
+            h1:hover{
+                width: 90%;
+                background:linear-gradient(180deg, rgb(255, 255, 255) 49%, rgb(135, 135, 135) 100%);
+                font-size: 40px;
+            }
+            h1 {
+                z-index: 10;
+                position: relative;
+                left: 50%;
+                text-align: center;
+                color: white;
+                outline: 30px;
+                background:linear-gradient(180deg, rgba(152,102,102,1) 49%, rgba(130,73,73,1) 100%);
+        
+                width: auto;
+                
+                transform: translate(-50%, -50%);
+                font-size: 3vw;
+                font-family: 'Oswald', sans-serif;
+                
+                margin: 5px;
+               
+                -webkit-text-stroke: 2px #000000;
+                
+                top: 0px;
+                border-radius: 25px;
+                text-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+
+                transition: width .1s, background .1s, font-size .1s;
+                box-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+            }
+
+            #Notifier {
+
+            }
+           
+            .Explanator {
+                position: fixed;
+                
+                transform: translate(-50%, 0%);
+                top: 50%;
+                left: 50%;
+                
+                background-color: rgba(0, 119, 255, 0.711);
+                width: 50%;
+                min-height: 300px;
+                z-index: 100;
+            }
+            p{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+                top: 100px;
+                width: 95%;
+                left: 50%;
+                margin: 0px;
+                z-index: 3;
+                font-size: 25px;
+                transform: translate(-50%, 0%);
+              
+                color: rgb(255, 255, 255);
+                text-shadow: -2px 1px 10px rgba(0,0,0,0.97);
+                padding-bottom: 100px;
+                text-align: justify;
+            }
+
+            h2{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+                top: 100px;
+                width: 95%;
+                left: 50%;
+                margin: 0px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                z-index: 3;
+                font-size: 50px;
+                transform: translate(-50%, 0%);
+                background:linear-gradient(180deg, rgb(172, 153, 153) 49%, rgb(87, 77, 77) 100%);
+                -webkit-text-stroke: 2px #000000;
+                border-radius: 25px;
+                text-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+                box-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+                
+                text-align: center;
+                color: rgb(255, 255, 255);
+                margin-bottom: 30px;
+                
+            }
+            
+            h3{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+                top: 10px;
+                width: 95%;
+              
+                margin: 0px;
+              
+            
+                z-index: 3;
+                font-size: 50px;
+            
+                -webkit-text-stroke: 2px #000000;
+                border-radius: 25px;
+                text-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+                
+                text-align: center;
+                color: rgb(255, 255, 255);
+               
+                
+            }
+
+
+            #Informationz {
+                position: relative;
+                width: 50%;
+                left: 50%;
+                background-color: rgba(16, 34, 67, .9);
+                padding-bottom: 100px;
+            }
+
+            #Image {
+                width: 90%; 
+                transform: translate(-50%, 22.5%); 
+                position: relative;
+                left: 50%; 
+                top: 50%;
+                border-radius: 20px;
+                margin-bottom: 20px;
+            }
+            
+            #Credits {
+                background: linear-gradient(90deg, rgba(2,0,74,1) 14%, rgba(130,73,73,0) 90%);
+                position: fixed;
+              
+                width: 100%;
+                max-width: 500px;
+                height: 100%;
+                z-index: 20;
+                display: flex;
+                flex-direction: column;
+                -ms-flex-align: left;
+                left: -1000px;
+               
+            }
+
+             
+            #CreditsPage {
+                z-index: 21;
+              
+            }
+
+
+            #CreditPhoto {
+               height: 9vh;
+               width: 300px;
+               object-fit: cover;
+               box-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+            }
+
+            h4{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+                bottom: -2px;
+                left: 15px;
+                width: 95%;
+              
+                margin: 0px;
+              
+            
+                z-index: 3;
+                font-size: 25px;
+            
+                -webkit-text-stroke: .2px rgb(0, 0, 0);
+                border-radius: 25px;
+                text-shadow: -2px 1px 15px rgba(0, 0, 0, 0.97);
+                
+                text-align: left;
+                color: rgb(255, 255, 255);
+               
+                
+            }
+
+            h5{
+                font-family: 'Rubik', sans-serif;
+                overflow-wrap: break-word;
+                position: relative;
+                padding: 20px;
+                left: 15px;
+                width: 95%;
+              
+                margin: 0px;
+              
+            
+                z-index: 3;
+                font-size: 4vh;
+            
+                -webkit-text-stroke: .2px rgb(252, 251, 251);
+                border-radius: 25px;
+                text-shadow: -2px 1px 15px rgba(0, 0, 0, 0.97);
+                
+                text-align: left;
+                color: rgb(255, 255, 255);
+               
+                
+            }
+
+            #hambagaButton {
+                transform: translate(0%, 0%); 
+                position: fixed;
+                right: 0px;
+                top: 0px;
+                width: 50px;
+                transition: width .1s;
+                
+            }
+
+            #hambagaButton:hover{
+                width: 55px;
+            }
+
+            
+         
+
+            @media (max-width: 1000px) {
+               
+                #CenterStuff{
+              
+                    position: relative;
+                    
+                    width: 100%;
+                    height: px;
+                    left: 50%;
+                    z-index: 3; 
+                    top: 350px;
+                    padding-top: 200px;
+                    margin-bottom: 100px;
+                    transform: translate(-50%, -50%);
+                }
+                
+                #Informationz {
+                    position: relative;
+                    width: 100%;
+                    left: 0%;
+                    background-color: rgba(16, 34, 67, .9);
+                    padding-bottom: 100px;
+                    
+                }
+               
+                h1 {
+                    z-index: 10;
+                    position: relative;
+                    left: 50%;
+                    text-align: center;
+                    color: white;
+                    outline: 30px;
+                    background:linear-gradient(180deg, rgba(152,102,102,1) 49%, rgba(130,73,73,1) 100%);
+            
+                    width: auto;
+                    
+                    transform: translate(-50%, -50%);
+                    font-size: 50px;
+                    font-family: 'Oswald', sans-serif;
+                    
+                    margin: 5px;
+                    -webkit-text-stroke: 2px #000000;
+                    
+                    top: 0px;
+                    border-radius: 25px;
+                    text-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+
+                    -webkit-user-select: none;
+                    -khtml-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -o-user-select: none;
+                    user-select: none;
+
+                    transition: width .1s, background .1s, font-size .1s;
+                    box-shadow: -2px 1px 15px rgba(0,0,0,0.97);
+                }
+
+            
+            
+            }
+		</style>
+		<!-- 
+			Import map is not available in all browsers.
+			This is necessary to serve the three path so that other imports can access it. 
+		-->
+
+        <script type="text/javascript" src="jquery-1.6.2.min.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            var height = $("#content").height();
+            $(".Explanator").height(height);
+        });
+        </script>
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "./node_modules/three/build/three.module.js"
+				}
+			}
+		</script>
+
+        
+	</head>
+
+    <body>
+         <!-- 
+        <div style="background-color: rgba(51, 0, 255, 0.118); width: 50%;height: 100%;z-index: 1;position: fixed;">0</div>
+        <div style="background-color: rgba(16, 34, 67, 0.8); width: 50%;height: 100%;z-index: 1;position: fixed;right: 0px;">0</div>
+        -->
+        <div class = "DivHeadbar"> 
+            <center>
+                
+                <tables class = "Headbar">
+                      <!--
+                    <tr>
+                       <a href="/index.html"><img class="Title" id = "HomeLogo" src="/Assets/HomeLogo.png" alt="">
+                        <a href="/about.html"><img class="Title" id = "HomeLogo" src="/Assets/HomeLogo.png" alt="">
+                       
+                       
+                    </tr>    
+                    -->
+                   
+                </table>
+                
+               
+            </center>
+            
+            
+        </div>
+       
+
+        <center>
+    
+                <!-- Canvas is necessary to hold a scene  -->
+            <canvas id="background"></canvas>
+            <script type="module" src="/main.js"></script>
+                
+            
+        </center>
+
+        <div id="Credits">
+            <img id=hambagaButton src="/Assets/HambagaIcon.png" alt="">
+            <h5>Web Dev</h5>
+            <div id="CreditsPage"> <img id="CreditPhoto" style="object-position: 0px 10% ;"  src="/Assets/Veyzha.JPG" alt="">
+            <h4>Veyzha - 17</h4>
+            </div>
+
+            <h5>Pemateri</h5>
+            <div id="CreditsPage"> <img id="CreditPhoto" style="object-position: 0px 0px ;" src="/Assets/Fathia.jpg" alt="">
+                <h4>Fathia - 08</h4></div>
+            <div id="CreditsPage"> <img id="CreditPhoto" style="object-position: 0px 15%;"  src="/Assets/Kazio.jpg" alt="">
+                <h4>Kazio - 11</h4></div>
+            <div id="CreditsPage"> <img id="CreditPhoto" style="object-position: 0px 0px ;" src="/Assets/Clarissa.png" alt="">
+                <h4>Clarissa - 06</h4></div>
+        </div>
+
+        <div id="CenterStuff">
+            <img class="Logo" src="/Assets/ColoLogo.png" alt="">
+            <table >
+                <tr>
+                    <a href = "#Pendahuluan" style="text-decoration: none;"><h1> Pendahuluan </h1></a> 
+                </tr>
+                <tr>
+                    <a href = "#Sejarah" style="text-decoration: none;"><h1> Sejarah Kopi Muria </h1></a> 
+                </tr>
+                <tr>
+                    <a href = "#AI" style="text-decoration: none;"><h1> Peran AI </h1></a> 
+                </tr>
+                <tr>
+                    <a href = "#Daftar" style="text-decoration: none;"><h1> Daftar Pustaka </h1></a> 
+                </tr>
+                
+            </table>
+        </div>
+
+        <div id="Informationz">
+    
+            <h2> Pendahuluan  <a id = "Pendahuluan" style="position: relative; top: -100px;"></a></h2>
+            <img id="Image" src="https://www.nativeindonesia.com/foto/tempat-wisata-kudus/Salah-Satu-Tempat-Wisata-Di-Desa-Colo.jpg" alt="" >
+
+            <p>Desa Colo merupakan salah satu desa yang berada di Kecamatan Dawe, Kudus, Jawa Tengah. Desa ini berada di kawasan Pegunungan Muria, sekitar 18 Km utara Kota Kudus, dimana terdapat makam ulama Nusantara dan anggota Wali Songo yang tersohor, Sunan Muria. 
+                <br><br>Pada era penjajahan Belanda di Indonesia, Veree­nigde Oost-Indische (VOC) mendatangkan bibit kopi secara besar-besaran pada tahun 1696-1699, dan memberikan keuntungan yang sangat besar bagi mereka. Pada tahun 1711, kopi Jawa untuk pertama kalinya dilelang di Eropa. Peristiwa tersebut merupakan awal mula munculnya perkebunan kopi di seluruh Jawa, salah satunya di lereng Pegunungan Muria, saat diberlakukannya sistem tanam paksa di tahun 1825 oleh Gubernur Jenderal Hindia Belanda Johannes Graaf Van Den Bosch. Produksi Kopi di Pegunungan Muria menghasilkan kualitas kopi yang sangat baik serta melimpah, sehingga kopi itu diekspor hingga ke Belanda.
+                <br><br>Selain kopi, beberapa tanaman yang sering dibudidayakan oleh masyarakat Desa Colo adalah pakis haji, pring towo, dan parijoto. Masyarakatnya juga bekerja sebagai pemandu wisatawan mengingat Desa Colo mempunyai banyak keindahan alam seperti air terjun Montel dan pengantar peziarah yang ingin berkunjung ke makam Sunan Muria.
+                <br><br>Kawasan hutan pegunungan Muria ini diupayakan untuk dijaga dan dirawat dengan baik oleh masyarakat Desa Colo karena kawasan tersebut memiliki sumber daya alam yang masyarakat sekitar dapat mencukupi kebutuhannya, serta diyakini dapat digunakan sebagai obat yang berkhasiat menyembuhkan. Masyarakat Colo tahu bahwa tanaman-tanaman tersebut mempunyai nilai jual yang tinggi namun masyrakat Colo mengambil tanaman tersebut sesuai kebutuhan mereka sehingga kelestariannya tetap terjaga.  Masyarakatnya juga mempunyai upacara adat yang diadakan secara rutin yang dikenal dengan sebutan “Wiwit Kopi”, yang menandai dimulainya panen kopi di Desa Colo. Kearifan lokal ini sangat membantu dalam melestarikan dan memelihara sumber daya lingkungan.    
+            </p>
+            <h2> Sejarah Kopi Muria <a id = "Sejarah" style="position: relative; top: -100px;"></a></h2>
+            <img id="Image" src="https://img.posjateng.id/img/content/2018/11/05/583/upaya-kudus-naikkan-kelas-kopi-muria-MSkTDvk1L7.jpg" alt="" >
+            
+            <p>
+                Sejarah panjang Kopi Muria sebelum menjadi salah satu harta karun berharga Kota Kudus berawal pada tahun 1825. Pada masa itu, kondisi keuangan Hindia Belanda sedang kurang baik karena terjadinya Perang Padri dan Perang Jawa yang memakan biaya yang cukup banyak. Oleh karena itu, Gubernur Jenderal Hindia Belanda yang baru ditunjuk oleh Pemerintah, Johannes van den Bosch, memperkenalkan sistem tanam paksa (cultuurstelsel) dimana petani-petani Jawa dipaksa memberikan seperlima lahan pertaniannya untuk diekspor. Komoditas yang diekspor diantaranya adalah gula dan kopi. Kebijakan ini berhasil menyelamatkan Belanda dari kebangkrutan dan anggaran Pemerintah Hindia Belanda menjadi seimbang. Selain itu, Belanda juga dapat membayar hutang yang ditinggalkan oleh Vereenigde Oostindische Compagnie (VOC). Pada saat itu, tanaman kopi terlindung oleh pohon pandan gunung, pohon mranak, dan vegetasi hutan lindung.
+            <br><br>Walaupun begitu, Surat Keputusan Nomor 34 Tanggal 24 Juni 1916 yang dikeluarkan oleh Gubernur Jenderal Johan Paul van Limburg Stirum menghapuskan sistem tanam paksa di Hindia Belanda. Selain itu, bagian hutan di lereng Muria diubah menjadi kawasan hutan. Setelah terbitnya keputusan tersebut, setiap petani yang memiliki lahan kopi di tanah milik Pemerintah Hindia Belanda diberi hak untuk memungut hasil panen selama 5 tahun. Kebijakan ini disebut sebagai Koffie Met Plug Recht atau KMP. Walaupun sudah dihapus pada tahun 1925, berdasarkan catatan Perusahaan Umum Kehutanan Negara (Perhutani) Pati kebijakan KMP masih berlaku di Desa Colo. Mulai 1942, lahan kebun kopi makin luas sehingga terjadi berbagai sengketa tanah. Pada tahun 1972, Gubernur Jawa Tengah, Mayjen Moenadi, menerbitkan Surat Keputusan Gubernur Jateng Nomor G297/1972.32/82/3 untuk menetapkan fungsi baru kawasan tersebut sebagai hutan lindung. Penggarap lahan kopi setelah 10 tahun terhitung sejak SK itu diberlakukan harus meninggalkan hutan. Selama 10 tahun warga dilarang mengubah, merusak hidrologi, dan tanah di hutan lindung. Pengelolaan oleh penggarap mendasarkan sistem bagi hasil.
+            <br><br>Tanaman kopi sudah menjadi napas bagi kehidupan warga Colo dan desa di sekitarnya. Kini, kawasan hutan lindung seluas 452 hektar di lereng Pegunungan Muria tersebut terus dibudidayakan secara turun temurun, dari satu generasi ke generasi lainnya dengan jenis kopi yang tetap sama—robusta dan arabika. Betapa besar hasil perkebunan itu, hingga pada tahun 2015, satu hektar lahan bahkan bisa menghasilkan 1,5-2 ton kopi.
+            <br><br>Kopi Muria memiliki karakteristik yang unik dibanding kopi lainnya. Aromanya wangi dan ada kesan rasa rempah-rempah dan akar-akaran yang khas. Saat ini, pemrosesan kopi dilakukan dengan dua cara, yaitu cara tradisional dan semi digital yang baru dimulai sekitar tahun 2013. Namun untuk proses semi digital, kopi harus melalui 18 proses pengolahan sebelum akhirnya dapat didistribusikan. Beberapa waktu sebelumnya, petani menjual kopi Muria dalam bentuk  biji kopi basah (belum dikeringkan atau diolah) sekitar Rp 550 ribu per kuintal. Kebanyakan petani menjual dalam bentuk biji kopi basah ke tengkulak. Namun, kini kopi Muria sudah mulai diolah dan dikemas terlebih dahulu hingga harganya pun menjadi lebih tinggi.
+            </p>
+    
+            <h2> Pengembangan menggunakan AI<a id = "AI" style="position: relative; top: -200px;"></a></h2>
+            <p>
+                budidaya biji kopi di Desa Colo masih dapat dikembangkan lagi menggunakan AI. Peran pertama yang AI dapat lakukan yaitu, membantu proses budidaya biji kopi dari penanaman hingga panen sehingga pengolahan jadi lebih modern dan efisien, AI dapat membantu dalam mendata kapan biji kopi pada lahan area tertentu ditanam, seberapa lama interval menanam pupuk pada biji kopi, dan juga kapan estimasi biji kopi tersebut akan di panen. Mendata waktu suatu tanaman biji kopi sangatlah penting untuk menjaga kualitas biji kopi tetap baik dan bisa jadi menjadikan kualitas biji kopi tersebut lebih tinggi. Mendata waktu juga membantu para pembudidaya biji kopi di desa colo dapat mengelola perkebunan kopinya dengan mudah, teratur, dan lebih efisien. AI juga dapat membantu mendeteksi cuaca yang akan mendatang dan memberi notifikasi kepada Tukang Kebun kopi tersebut serta membantu atau merekomendasi suatu aksi kepada tukang kebun kopi tersebut untuk menjaga hasil panennya tetap baik. 
+<br><br>Peran kedua yang AI dapat lakukan yaitu, AI akan membantu distribusi dan marketing dari kopi tersebut. Dengan bantuan AI, kita dapat mendaftarkan beberapa kafe-kafe yang memungkinkan butuh persediaan biji kopi untuk bisnisnya ke dalam suatu sistem yang dapat digunakan untuk mendata persediaan biji kopi pada setiap kafe tersebut. Selain itu dengan persediaan servis iklan secara online AI dapat membantu Tukang Kebun mempromosikan biji kopi aslinya kepada warga atau masyarakat sekitar sehingga dapat meningkatkan popularitas dan recognition terhadap masyarakat, dengan ini juga AI dapat membantu Tukang Kebun Kopi tersebut mendapat pelanggan dari berbagai tingkat pada masyarakat. 
+<br><br>Peran ketiga yang AI dapat lakukan yaitu meneliti selera pasar kopi di Indonesia dari tingkat penjualan Kopi tersebut. AI dapat mengambil data dari seluruh pelanggan biji kopi yang dihasilkan di Desa Colo tersebut dan melihat apakah ada peningkatan atau pengurangan pemesanan, bahkan mungkin dapat mengambil respon pelanggan mengenai biji kopi yang dihasilkan di Desa Colo tersebut. Dengan ini AI dapat membantu Tukang Kebun Kopi untuk melihat sekte pasar kopinya dengan lebih teratur, efisien, dan akurat. 
+<br><br>Untuk mewujudkan atau mengimplementasikan gagasan ini tidak diperlukan perlengkapan yang sangat mahal, untuk perkebunan skala sedang kita bisa membuatnya dalam bentuk aplikasi sehingga alat yang hanya akan digunakan adalah Handphone. Pengguna, atau dalam kasus ini kita akan sebut sebagai Tukang Kebun, dapat mengatur lahan mana yang akan ditanami biji kopi, melihat grafik sekte pasar, dan juga mengatur pendistribusian kopi kepada kafe - kafe lain.
+<br><br>Dengan metode-metode ini, diharapkan agar kopi Muria kembali menjadi salah satu kopi yang berada di pasar nasional atau bahkan internasional dengan bantuan teknologi A.I.
+ </p>
+    
+            <h2> Daftar Pustaka <a id = "Daftar" style="position: relative; top: -100px;"></a></h2>
+            <p>
+                Works Cited
+<br><br>Fitria, Riska. “Kopi Muria dari Warisan Tanam Paksa hingga jadi Biji Kopi Unggulan.” Ngoni Yuk!, 2 October 2022, https://food.detik.com/info-kuliner/d-6431973/kopi-muria-dari-warisan-tanam-paksa-hingga-jadi-biji-kopi-unggulan/2. Accessed 1 September 2023.
+<br><br>Loken, Brent. Can We Create the "Perfect" Farm? Edited by Emma Bryce. 2020. YouTube, https://youtu.be/xFqecEtdGZ0?si=Z-ePSoXujlPlbAgQ.
+<br><br>Media Indonesia. “Menyelisik kembali Mutiara Hitam dari Lereng Muria.” Media Indonesia, 16 January 2021, https://mediaindonesia.com/weekend/377436/menyelisik-kembali-mutiara-hitam-dari-lereng-muria. Accessed 1 September 2023.
+<br><br>RakyatMuria.com. “Perkenalkan Kopi Muria Pada Generasi Sejak Dini - Perhutani.” Perhutani, 2016, https://www.perhutani.co.id/perkenalkan-kopi-muria-generasi-sejak-dini/. Accessed 1 September 2023.
+<br><br>SuaraBaru.id. “Kopi Muria dan Jejak Kolonialisme di Tanah Kudus.” SuaraBaru.id, 21 December 2019, https://suarabaru.id/2019/12/21/kopi-muria-dan-jejak-kolonialisme-di-tanah-kudus. Accessed 1 September 2023.
+<br><br>Wikipedia. “Colo, Dawe, Kudus.” Wikipedia, 2023, https://id.wikipedia.org/wiki/Colo,_Dawe,_Kudus. Accessed 1 September 2023.
+</p>
+        
+        </div>
+
+        
+    </body>
+    
+       
+
+</html>
